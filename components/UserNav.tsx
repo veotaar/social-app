@@ -19,18 +19,20 @@ const UserNav: FC<UserNavProps> = ({ username }) => {
   const router = useRouter();
 
   return (
+    // TODO: change with navigation menu component
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">{`user / ${username}` || 'no user'}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer" asChild>
           <Link href="/me/profile">Go to profile</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer" asChild>
           <Link href="/me/settings">Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuItem
+          className="cursor-pointer"
           onSelect={(e) => {
             e.preventDefault();
             signOut(auth);

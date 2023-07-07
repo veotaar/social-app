@@ -8,6 +8,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '@/config/firebase';
 import { ModeToggle } from './ModeToggle';
 import UserNav from '../UserNav';
+// import Navigation from '../Navigation';
 // import { doc, getDoc } from 'firebase/firestore';
 
 const Navbar: FC = () => {
@@ -61,6 +62,7 @@ const Navbar: FC = () => {
         {isSignedIn ? (
           <div className="ml-auto">
             <UserNav username={displayName} />
+            {/* <Navigation /> */}
           </div>
         ) : (
           <div className="ml-auto flex items-center gap-2">
