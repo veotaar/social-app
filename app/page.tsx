@@ -1,9 +1,12 @@
-function Home() {
+import { FC } from 'react';
+import SubmitButton from '@/components/SubmitButton';
+
+const Home: FC = () => {
   return (
-    <main className="mt-1">
-      <h1>Home page</h1>
-    </main>
+    <div className="mx-auto max-w-5xl py-2">
+      <SubmitButton />
+    </div>
   );
-}
+};
 
 export default Home;
