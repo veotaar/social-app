@@ -62,7 +62,7 @@ const SettingsForm: FC = () => {
       return;
     }
 
-    const exists = await isUsernameAlreadyExists(values.displayName);
+    const exists = await isUsernameAlreadyExists(values.displayName.replace(/\s/g, ''));
 
     if (exists) {
       toast({
@@ -75,21 +75,21 @@ const SettingsForm: FC = () => {
 
     // only 'displayName' is changed
     if (displayName !== values.displayName && about === values.about) {
-      await updateProfile(auth.currentUser, { displayName: values.displayName });
+      await updateProfile(auth.currentUser, { displayName: values.displayName.replace(/\s/g, '') });
       await updateDoc(userRef, {
-        displayName: values.displayName,
+        displayName: values.displayName.replace(/\s/g, ''),
       });
-      updateDisplayName(values.displayName);
+      updateDisplayName(values.displayName.replace(/\s/g, ''));
       return;
     }
 
     // both changed
-    await updateProfile(auth.currentUser, { displayName: values.displayName });
+    await updateProfile(auth.currentUser, { displayName: values.displayName.replace(/\s/g, '') });
     await updateDoc(userRef, {
-      displayName: values.displayName,
+      displayName: values.displayName.replace(/\s/g, ''),
       about: values.about,
     });
-    updateDisplayName(values.displayName);
+    updateDisplayName(values.displayName.replace(/\s/g, ''));
     updateAbout(values.about);
   };
 

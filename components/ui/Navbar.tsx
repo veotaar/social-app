@@ -22,6 +22,10 @@ const Navbar: FC = () => {
   const updateIsSignedIn = userStore((state) => state.updateIsSignedIn);
   const updateAbout = userStore((state) => state.updateAbout);
   const resetUser = userStore((state) => state.resetUser);
+  const loadUpvotedPosts = userStore((state) => state.loadUpvotedPosts);
+  const loadDownvotedPosts = userStore((state) => state.loadDownvotedPosts);
+  const loadUpvotedComments = userStore((state) => state.loadUpvotedComments);
+  const loadDownvotedComments = userStore((state) => state.loadDownvotedComments);
 
   useEffect(() => {
     const getAbout = async () => {
@@ -31,6 +35,10 @@ const Navbar: FC = () => {
 
       if (docSnap.exists()) {
         updateAbout(docSnap.data().about);
+        loadUpvotedPosts(docSnap.data().upvotedPosts);
+        loadDownvotedPosts(docSnap.data().downvotedPosts);
+        loadUpvotedComments(docSnap.data().upvotedComments);
+        loadDownvotedComments(docSnap.data().downvotedComments);
       } else {
         // docSnap.data() will be undefined in this case
         console.log('No such document!');

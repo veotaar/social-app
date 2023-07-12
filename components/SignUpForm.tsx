@@ -56,10 +56,18 @@ const SignUpForm: FC = () => {
         emailVerified: userCredential.user.emailVerified,
         displayName: randomId,
         about: '',
+        upvotedPosts: [],
+        downvotedPosts: [],
+        upvotedComments: [],
+        downvotedComments: [],
         createdAt: new Date(Date.parse(userCredential.user.metadata.creationTime as string)),
       };
 
       await setDoc(doc(db, 'users', userCredential.user.uid), userData);
+      // await setDoc(doc(db, 'users', userCredential.user.uid, 'likes', userCredential.user.uid), {
+      //   posts: ['postid'],
+      //   comments: ['commentid'],
+      // });
 
       updateDisplayName(userData.displayName);
       updateUid(userCredential.user.uid);

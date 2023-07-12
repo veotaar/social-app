@@ -19,7 +19,6 @@ const UserNav: FC<UserNavProps> = ({ username }) => {
   const router = useRouter();
 
   return (
-    // TODO: change with navigation menu component
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">{`user / ${username}` || 'no user'}</Button>
